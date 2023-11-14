@@ -64,3 +64,29 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Copy Right © Mafia Hongkong
+
+The program has been built when the Mafia Hongkong was doing PKL. by the way We are from SMKN 2 Jakarta
+    # Mafia Hongkong's member
+        1. Hekal Misbach (Frontend)
+        2. Ananta Zakaria Achmad (Backend)
+        3. Ariya Muhammad (Data Input)
+        
+This project aims to make it easier for employees to input official travel data, which previously had to be entered manually via Excel, to be honest there is no significant change, this project also requires employees to input, but in this project employees can enter their input into data that has been correlated, so that one data can accommodate many employees.
+
+## Required Software
+ __1. Xampp__
+ __2. NodeJs__
+ __3. Composer__
+
+## Tutorial Bahasa Indonesia
+
+**Step 1 :**
+Konfigurasikan database. buatlah sebuah database pada MySQL atau sebagainya, kemudian konfigurasikan nama database yang anda buat ke dalam file .env lalu masukan nama database nya ke dalam DB_DATABASE = < namaDatabase >
+
+**Step 2 :**
+Lakukan migrasi database beserta melakukan insert data inti (seeder) dengan menginput perintah `php artisan migrate --seed`.
+
+**Step 4:**
+Setelah itu run server dengan menggunakan terminal `php artisan serve ` untuk mengaktifkan server. dan `npm run dev` untuk mengaktifkan vite untuk tampilan
