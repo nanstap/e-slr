@@ -67,3 +67,10 @@ Route::get('/surat-tugas/delete/{id}', [App\Http\Controllers\SuratTugasControlle
 Route::get('/sppd/add', [App\Http\Controllers\SppdController::class, 'create']);
 Route::post('/sppd/add', [App\Http\Controllers\SppdController::class, 'store']);
 
+/**
+ *          Laporan Sppd
+ */
+Route::get('/laporan', [App\Http\Controllers\LaporanSppdController::class, 'create']);
+Route::post('/laporan',[App\Http\Controllers\LaporanSppdController::class, 'store']);
+//get data st
+Route::get('/data-st', [App\Http\Controllers\LaporanSppdController::class, 'getDataSt']);

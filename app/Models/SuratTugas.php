@@ -35,6 +35,11 @@ class SuratTugas extends Model
         return $this->belongsTo(Sppd::class, 'no_sppd');
     }
 
+    public function laporan()
+    {
+        return $this->hasMany(LaporanSppd::class);
+    }
+
     public function getNo_sp2dSppdAttribute()
     {
         return $this->sppd ? $this->sppd->no_spm : 'Belum di isi';

@@ -1,6 +1,15 @@
 @extends('surat.layouts')
 
 @section('head')
+<style>
+ ul{
+    margin-left: -37px;
+  }
+  a{
+    margin-right: -100px;
+  }
+  
+</style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 @endsection
 @section('content')
@@ -86,11 +95,11 @@
   </div>
   <div class="col-6">
     <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif; font-weight:bold;">Mulai</label>
-    <input type="date" class="form-control"   name="tgl_perjadin_mulai" id="validationCustom02">
+    <input type="date" class="form-control" value="{{old('tgl_perjadin_mulai')}}"  name="tgl_perjadin_mulai" id="validationCustom02">
   </div>
   <div class="col-6">
     <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif; font-weight:bold;">Selesai</label>
-    <input type="date" class="form-control"   name="tgl_perjadin_selesai" id="validationCustom02">
+    <input type="date" class="form-control" value="{{old('tgl_perjadin_selesai')}}"  name="tgl_perjadin_selesai" id="validationCustom02">
   </div>
   <div class="col-6">
     <div class="form-group">
@@ -101,18 +110,18 @@
   <div class="col-6">
     <div class="form-group">
       <label for="" style="font-family: 'Poppins',sans serif; font-weight:bold; margin-top: 10px;">Kota Tujuan</label>
-      <input type="text" class="form-control" placeholder="Masukan Kota" name="kota_tujuan" value="">
+      <input type="text" class="form-control" placeholder="Masukan Kota" name="kota_tujuan" value="{{old('kota_tujuan')}}">
     </div>
   </div>
   <div class="col-5">
     
       <label for="" style="font-family: 'Poppins',sans serif; font-weight:bold;">Uraian Tugas</label>
-      <input type="text" class="form-control" placeholder="Rincian Tugas" name="uraian_tugas" value="">
+      <input type="text" class="form-control" placeholder="Rincian Tugas" name="uraian_tugas" value="{{old('uraian_tugas')}}">
     
   </div>
   <div class="col-3">
     <label for="" style="font-family: 'Poppins',sans serif; font-weight:bold;">Nomor Nota Dinas</label>
-    <input type="text" class="form-control" placeholder="Masukan Nodin" name="no_nodin" value="">
+    <input type="text" class="form-control" placeholder="Masukan Nodin" name="no_nodin" value="{{old('no_nodin')}}">
   </div>
   <div class="col-4">
     <label for="" style="font-family: 'Poppins',sans serif; font-weight:bold;">Nodin</label>

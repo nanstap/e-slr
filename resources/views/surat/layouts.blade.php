@@ -81,7 +81,7 @@
        }
 
        .fas{
-        position: relative;
+        /* position: relative; */
         width: 70px;
         height: 40px;
         top: 54px;
@@ -91,7 +91,7 @@
        .nav-item{
         font-weight: bold;
         font-size: 15px;
-        position: relative;
+        /* position: relative; */
         top: 2px;
         margin-left: 50px;
         padding-top: -10px;
@@ -166,7 +166,6 @@
     }
        </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
         @yield('head')
 
     </head>
@@ -196,7 +195,7 @@
             </a>
         </li>
         <li>
-            <a href="/sppd/add" class="{{ request()->path() === 'sppd/add' ? 'active' : '' }}">
+            <a href="/laporan" class="{{ request()->path() === 'laporan' ? 'active' : '' }}">
             <i class="fas fa-book"></i>
                 <span class="nav-item">Laporan SPPD</span>
             </a>
@@ -210,7 +209,7 @@
         <li>
             <a href="/pegawai" class="{{ request()->path() === 'pegawai' ? 'active' : '' }}">
             <i class="fas fa-users"></i>
-                <span class="nav-item" style="margin-left: 45px;">Pegawai</span>
+                <span class="nav-item">Pegawai</span>
             </a>
 </li>
         <li>
@@ -230,6 +229,7 @@
     </nav>
         <!-- pake extend aja biar cepet -->
         @yield('content')
+        @yield('script')
     </body>
 </html>
 

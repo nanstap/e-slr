@@ -173,11 +173,14 @@ class SuratTugasController extends Controller
         $datval = $request->validate([
             'no_srt_tgs' => 'required',
             'tgl_srt_tgs' => 'required',
-            // 'upload_st' => 'required',
-            // 'upload_nd' => 'required',
-            // 'upload_sp' => 'required',
+            'upload_st' => 'max:130',
+            'upload_nd' => 'max:130',
+            'upload_sp' => 'max:130',
             //'pegawai_[]' => 'required'
         ],  [
+            'upload_st.max' => 'File Tidak Boleh Lebih Dari 13 KB', 
+            'upload_nd.max' => 'File Tidak Boleh Lebih Dari 13 KB',
+            'upload_sp.max' => 'File Tidak Boleh Lebih Dari 13 KB',
             // 'upload_st.required' => 'File Perlu Di Upload',
             // 'upload_st.mimetypes' => 'Format file tidak di dukung',
             // 'upload_nd.required' => 'File Perlu Di Upload',
@@ -211,9 +214,9 @@ class SuratTugasController extends Controller
             $namaST = uniqid() . '_' . $request->no_srt_tgs . '.' . $extSt;
             $namaND = uniqid() . '_' . $request->no_srt_tgs . '.' . $extNd;
             $namaSP = uniqid() . '_' . $request->no_srt_tgs . '.' . $extSp;
-            $request->file('upload_st')->storeAs('public/uploads', $namaST, 'local');
-            $request->file('upload_nd')->storeAs('public/uploads', $namaND, 'local');
-            $request->file('upload_sp')->storeAs('public/uploads', $namaSP, 'local');
+            $request->file('upload_st')->storeAs('public/uploads/st', $namaST, 'local');
+            $request->file('upload_nd')->storeAs('public/uploads/st', $namaND, 'local');
+            $request->file('upload_sp')->storeAs('public/uploads/st', $namaSP, 'local');
         }
         
         $FormatNmr = $request->no_srt_tgs . " ST/SDL.1/" . date("Y");
@@ -361,15 +364,15 @@ class SuratTugasController extends Controller
             'kota_tujuan' => $request->kota_tujuan,
             'uraian_tugas'=> $request->uraian_tugas,
             'no_nodin' => $request->no_nodin,
-            'no_sppd' => $request->sppd,
+            // 'no_sppd' => $request->sppd,
         ];
         
-        $allData = SuratTugas::findOrFail($id);
-        $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
-        $allData->update($dataToUpdate);
+        // $allData = SuratTugas::findOrFail($id);
+        // $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
+        // $allData->update($dataToUpdate);
 
-        $changeStat = Sppd::find($request->sppd);
-        $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
+        // $changeStat = Sppd::find($request->sppd);
+        // $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
 
         return redirect('/surat-tugas')->with('done', 'Data berhasil diperbarui.');
     }

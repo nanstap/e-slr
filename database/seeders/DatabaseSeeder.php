@@ -213,47 +213,68 @@ class DatabaseSeeder extends Seeder
         
         \App\Models\Sppd::factory()->create([
                 'id' => 1,
-                'no_spm' => 0, 
+                // 'no_spm' => 0, 
                 'no_sp2d' => 0, 
-                'tgl_sp2d' => '0001-01-01', 
-                'tgl_pergi' => '0001-01-01',
+                'tgl_sp2d' => '0001-01-01'
+        ]);
+        \App\Models\LaporanSppd::create([
+                'id' => 1,
+                'st_id' => 1,
+                'sppd_id' => 1,
+                'tgl_pergi' => '2024-02-10',
                 'maskapai_pergi' => 'N/A', 
                 'kode_booking_pergi' => 'N/A',  
                 'no_tiket_pergi' => 'N/A', 
-                'harga_pergi' => 0, 
+                'harga_pergi' => 0,
+                'taksi_asal_pergi' => 55000,
+                'taksi_tujuan_pergi' => 20000,  
                 'tgl_pulang' => '0001-01-01', 
                 'maskapai_pulang' => 'N/A', 
                 'kode_booking_pulang' => 'N/A',    
                 'no_tiket_pulang' => 'N/A', 
                 'harga_pulang' => 0, 
+                'taksi_asal_pulang' => 30000,
+                'taksi_tujuan_pulang' => 25000,
                 'tgl_masuk_hotel' => '0001-01-01', 
                 'tgl_keluar_hotel' => '0001-01-01', 
                 'jumlah_hari_hotel' => 0, 
                 'nama_hotel' => 'N/A', 
                 'no_kamar' => 0, 
-                'tarif' => 0 
+                'tarif' => 0,
+                'total' => 0,
+                'bukti' => 'wew.png'
         ]);
         \App\Models\Sppd::factory()->create([
             'id' => 2,
-            'no_spm' => 2631, 
             'no_sp2d' => 923819, 
             'tgl_sp2d' => '2023-09-11', 
-            'tgl_pergi' => '2023-09-11',
+        ]);
+        \App\Models\LaporanSppd::create([
+            'id' => 2,
+            'st_id' => 1,
+            'sppd_id' => 1,
+            'tgl_pergi' => '2024-02-10',
             'maskapai_pergi' => 'Nigair Lines', 
             'kode_booking_pergi' => 'N1G3R21',  
             'no_tiket_pergi' => '0232', 
-            'harga_pergi' => 2000000, 
+            'harga_pergi' => 2000000,
+            'taksi_asal_pergi' => 55000,
+            'taksi_tujuan_pergi' => 20000, 
             'tgl_pulang' => '2023-09-13', 
             'maskapai_pulang' => 'Kapten Agung', 
             'kode_booking_pulang' => 'QWERTY42',    
             'no_tiket_pulang' => '201921', 
-            'harga_pulang' => 1500000, 
+            'harga_pulang' => 1500000,
+            'taksi_asal_pulang' => 55000,
+            'taksi_tujuan_pulang' => 20000, 
             'tgl_masuk_hotel' => '2023-09-11', 
             'tgl_keluar_hotel' => '2023-09-13', 
             'jumlah_hari_hotel' => 2, 
             'nama_hotel' => 'Mas Hardin Erotic Hotels', 
             'no_kamar' => 20, 
-            'tarif' => 550000 
+            'tarif' => 550000 ,
+            'total' => 1500000,
+            'bukti' => 'papuamerdeka.jpeg'
         ]);
 
         \App\Models\SuratTugas::create([

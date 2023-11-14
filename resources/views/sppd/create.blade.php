@@ -103,108 +103,46 @@
 </style> -->
  
 
-
+@section('head')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+@endsection
 @section('content')
-  
   <div class="container">
   <div class="judul">
-    <h3 style="margin-left: 500px; margin-top:50px;">FORM INPUT SPPD</h3>
+    <h3 style="margin-left: 500px; margin-top:110px; font-size:40px;">FORM INPUT SPPD</h3>
     <hr style="width: 1125px; margin-left: 110px;">
   </div>
     <div class="navbar-label">
     </div>
     <!--Form input-->
-    <form class="" method="post" id="" action="/sppd/add" style="margin-left: 260px; margin-top: 70px;">
+    <form class="" method="post" id="" action="/sppd/add" style="margin-left: 320px; margin-top: 90px;" enctype="multipart/form-data">
       <div class="row g-3" id="rowId">
     @csrf
    
   <!-- kolom sppd -->
-  <div class="col-3" style="margin-left:-0px;">
-  <label for="">No SPM</label>
-      <input type="text" class="form-control" placeholder="Masukan SPM" name="no_spm[]" value="{{old('no_spm[]')}}">
-  </div>
   <div class="col-3">
   <label for="">No SPPD</label>
-      <input type="text" class="form-control" placeholder="Masukan SPPD" name="no_sp2d[]" value="{{ old('no_sp2d[]')}}">
+      <input type="text" class="form-control" placeholder="Masukan SPPD" name="no_sp2d" value="{{ old('no_sp2d')}}">
   </div>
   <div class="col-3">
   <label for="">Tanggal SPPD</label>
-      <input type="date" class="form-control" name="tgl_sp2d[]" value="{{ old('tgl_sp2d[]')}}">
+      <input type="date" class="form-control" name="tgl_sp2d" value="{{ old('tgl_sp2d')}}">
   </div>
-  <div class="col-3">
-  <label for="">Tanggal Pergi</label>
-      <input type="date" class="form-control" name="tgl_pergi[]" value="{{ old('tgl_pergi[]')}}">
-  </div>
+  
+  <div class="col-4">
+      <label for="inputEmail4" class="form-label" style="font-family: 'Poppins',sans serif;">Upload SPPD</label>
+      <input type="file" value="{{old('upload_sppd')}}" class="form-control @error('upload_sppd') is-invalid @enderror" id="validationCustom01" name="upload_sppd" placeholder=""> 
+      @error('upload_sppd')
+        <div class="alert-danger" style="color: red;">{{ $message }}</div>
+      @enderror
+    </div>
  
-  <div class="col-3">
-    <label for="inputPassword4" class="form-label">Maskapai Pergi</label>
-    <input type="text" class="form-control" placeholder="Masukan Maskapai" value="{{ old('maskapai_pergi[]')}}" name="maskapai_pergi[]" id="validationCustom02">
+ 
   </div>
-  <div class="col-3">
-    <label for="inputPassword4" class="form-label">Kode Booking Pergi</label>
-    <input type="text" class="form-control" placeholder="Masukan Maskapai" value="{{ old('kode_booking_pergi[]')}}" name="kode_booking_pergi[]" id="validationCustom02">
-  </div>
-  <div class="col-3">
-    <label for="inputPassword4" class="form-label">No Tiket Pergi</label>
-    <input type="text" class="form-control" placeholder="Masukan Maskapai" value="{{ old('no_tiket_pergi[]')}}" name="no_tiket_pergi[]" id="validationCustom02">
-  </div>
-  <div class="col-3">
-    <label for="inputPassword4" class="form-label">Harga Pergi</label>
-    <input type="text" class="form-control" placeholder="Masukan Maskapai" value="{{ old('harga_pergi[]')}}" name="harga_pergi[]" id="validationCustom02">
-  </div>
-  <div class="col-3">
-  <label for="">Tanggal Pulang</label>
-      <input type="date" class="form-control" name="tgl_pulang[]" value="{{ old('tgl_pulang[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Maskapai Pulang</label>
-      <input type="text" class="form-control" placeholder="Masukan Maskapai" name="maskapai_pulang[]" value="{{ old('maskapai_pulang[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Kode Booking Pulang</label>
-      <input type="text" class="form-control" placeholder="Masukan Kode" name="kode_booking_pulang[]" value="{{ old('kode_booking_pulang[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">No Tiket Pulang</label>
-      <input type="text" class="form-control" placeholder="Masukan No Tiket" name="no_tiket_pulang[]" value="{{ old('no_tiket_pulang[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Harga Pulang</label>
-      <input type="text" class="form-control" placeholder="Masukan Nominal" name="harga_pulang[]" value="{{ old('harga_pulang[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Tanggal Masuk Hotel</label>
-      <input type="date" class="form-control" name="tgl_masuk_hotel[]" value="{{ old('tgl_masuk_hotel[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Tanggal Keluar Hotel</label>
-      <input type="date" class="form-control" name="tgl_keluar_hotel[]" value="{{ old('tgl_keluar_hotel[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Jumlah Hari Hotel</label>
-      <input type="text" class="form-control" placeholder="Masukan Jumlah Hari" name="jumlah_hari_hotel[]" value="{{ old('jumlah_hari_hotel[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Nama Hotel</label>
-      <input type="text" class="form-control" placeholder="Masukan Nama Hotel" name="nama_hotel[]" value="{{ old('nama_hotel[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">No Kamar</label>
-      <input type="text" class="form-control" placeholder="Masukan Nomor" name="no_kamar[]" value="{{ old('no_kamar[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Tarif</label>
-      <input type="text" class="form-control" placeholder="Masukan Nominal" name="tarif[]" value="{{ old('tarif[]')}}">
-  </div>
-  <div class="col-3">
-  <label for="">Total</label>
-      <input type="text" class="form-control" placeholder="Masukan Nominal" name="total[]" value="{{ old('total[]')}}">
-  </div>
-  </div>
-  <div class="row g-3 mt-1" >
+  <div class="row g-3 mt-4 " >
     <div class="col-12" style="margin-top: 30px;">
       <button type="submit" id="btn" class="btn btn-primary">Submit</button>
-      <button class="btn btn-success" id="sppdPlus">Add</button>
+      <!-- <button class="btn btn-success" id="sppdPlus">Add</button> -->
     </div>
     </div>
 </form>

@@ -17,6 +17,8 @@ class Sppd extends Model
         return $this->hasMany(SuratTugas::class);
     }
 
+    // public function g
+
     // public function spm()
     // {
     //     return $this->belongsTo(Spm::class);
