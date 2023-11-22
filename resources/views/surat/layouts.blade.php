@@ -14,6 +14,7 @@
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
        }
+       
        body{
         background: #dfe9f5;
        }
@@ -162,9 +163,10 @@
     }
     ul li{
         list-style: none;
-        margin-left: -8px;
+        margin-left: 5px;
     }
        </style>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         @yield('head')
 
@@ -201,7 +203,7 @@
             </a>
         </li>
         <li>
-            <a href="/sppd/add" class="{{ request()->path() === 'sppd/add' ? 'active' : '' }}">
+            <a href="/spm/add" class="{{ request()->path() === 'spm/add' ? 'active' : '' }}">
             <i class="fas fa-briefcase"></i>
                 <span class="nav-item">SPM</span>
             </a>

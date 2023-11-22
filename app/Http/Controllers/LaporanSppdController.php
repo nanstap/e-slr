@@ -11,7 +11,11 @@ use function Laravel\Prompts\select;
 
 class LaporanSppdController extends Controller
 {
-
+    public function getLaporan()
+    {
+        $laporan = LaporanSppd::with('st.sppd')->get();
+        return response()->json($laporan, 200);
+    }
     public function getDataSt(Request $request)
     {
         $value = $request->input('value');

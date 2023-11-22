@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\Rekap;
+use App\Models\LaporanSppd;
 use App\Models\SuratTugas;
 use App\Models\Pegawai;
 use App\Models\Sppd;
@@ -28,80 +29,94 @@ class SuratTugasController extends Controller
      */
     public function getSurat()
     {
-        $dataSurat = SuratTugas::all();
-        return DataTables::of($dataSurat)
-        ->addColumn('pegawai_name', function ($dataSurat){
-            return $dataSurat->pegawai->nama;
+        $datast = SuratTugas::all();
+        return DataTables::of($datast)
+        
+
+        //Kepakai
+
+        ->addColumn('pegawai_name', function ($datast){
+            return $datast->pegawai->nama;
         })
-        ->addColumn('pegawai_status', function ($dataSurat){
-            return $dataSurat->pegawai->status;
+        ->addColumn('pegawai_status', function ($datast){
+            return $datast->pegawai->status;
         })
-        ->addColumn('nodin', function ($dataSurat){
-            return $dataSurat->no_nodin;
+        ->addColumn('nodin', function ($datast){
+            return $datast->no_nodin;
         })
-        ->addColumn('no_sp2d', function ($dataSurat){
-            return $dataSurat->sppd->no_sp2d;
+        ->addColumn('id', function ($datast){
+            return $datast->id;
         })
-        ->addColumn('no_spm', function ($dataSurat){
-            return $dataSurat->sppd->no_spm;
-        })
-        ->addColumn('tgl_sp2d', function ($dataSurat){
-            return $dataSurat->sppd->tgl_sp2d;
-        })
-        ->addColumn('tgl_pergi', function ($dataSurat){
-            return $dataSurat->sppd->tgl_pergi;
-        })
-        ->addColumn('maskapai_pergi', function ($dataSurat){
-            return $dataSurat->sppd->maskapai_pergi;
-        })
-        ->addColumn('kode_booking_pergi', function ($dataSurat){
-            return $dataSurat->sppd->kode_booking_pergi;
-        })
-        ->addColumn('no_tiket_pergi', function ($dataSurat){
-            return $dataSurat->sppd->no_tiket_pergi;
-        })
-        ->addColumn('harga_pergi', function ($dataSurat){
-            return $dataSurat->sppd->harga_pergi;
-        })
-        ->addColumn('tgl_pulang', function ($dataSurat){
-            return $dataSurat->sppd->tgl_pulang;
-        })
-        ->addColumn('maskapai_pulang', function ($dataSurat){
-            return $dataSurat->sppd->maskapai_pulang;
-        })
-        ->addColumn('kode_booking_pulang', function ($dataSurat){
-            return $dataSurat->sppd->kode_booking_pulang;
-        })
-        ->addColumn('no_tiket_pulang', function ($dataSurat){
-            return $dataSurat->sppd->no_tiket_pulang;
-        })
-        ->addColumn('harga_pulang', function ($dataSurat){
-            return $dataSurat->sppd->harga_pulang;
-        })
-        ->addColumn('tgl_masuk_hotel', function ($dataSurat){
-            return $dataSurat->sppd->tgl_masuk_hotel;
-        })
-        ->addColumn('tgl_keluar_hotel', function ($dataSurat){
-            return $dataSurat->sppd->tgl_keluar_hotel;
-        })
-        ->addColumn('jumlah_hari_hotel', function ($dataSurat){
-            return $dataSurat->sppd->jumlah_hari_hotel;
-        })
-        ->addColumn('nama_hotel', function ($dataSurat){
-            return $dataSurat->sppd->nama_hotel;
-        })
-        ->addColumn('no_kamar', function ($dataSurat){
-            return $dataSurat->sppd->no_kamar;
-        })
-        ->addColumn('tarif', function ($dataSurat){
-            return $dataSurat->sppd->tarif;
-        })
-        ->addColumn('sppd_id', function ($dataSurat){
-            return $dataSurat->no_sppd;
-        })
-        ->addColumn('total', function ($dataSurat){
-            return $dataSurat->sppd->total;
-        })
+        // ->addColumn('spm_id', function($datast)  {
+        //     return $datast->spm_id;
+        // })
+        // ->addColumn('st_id', function($datast)  {
+        //     return $datast->laporan->st_id;
+        // })
+
+        // ->addColumn('no_sp2d', function ($dataSurat){
+        //     return $dataSurat->sppd->no_sp2d;
+        // })
+        // ->addColumn('no_spm', function ($dataSurat){
+        //     return $dataSurat->sppd->no_spm;
+        // })
+        // ->addColumn('tgl_sp2d', function ($dataSurat){
+        //     return $dataSurat->sppd->tgl_sp2d;
+        // })
+        // ->addColumn('tgl_pergi', function ($dataSurat){
+        //     return $dataSurat->sppd->tgl_pergi;
+        // })
+        // ->addColumn('maskapai_pergi', function ($dataSurat){
+        //     return $dataSurat->sppd->maskapai_pergi;
+        // })
+        // ->addColumn('kode_booking_pergi', function ($dataSurat){
+        //     return $dataSurat->sppd->kode_booking_pergi;
+        // })
+        // ->addColumn('no_tiket_pergi', function ($dataSurat){
+        //     return $dataSurat->sppd->no_tiket_pergi;
+        // })
+        // ->addColumn('harga_pergi', function ($dataSurat){
+        //     return $dataSurat->sppd->harga_pergi;
+        // })
+        // ->addColumn('tgl_pulang', function ($dataSurat){
+        //     return $dataSurat->sppd->tgl_pulang;
+        // })
+        // ->addColumn('maskapai_pulang', function ($dataSurat){
+        //     return $dataSurat->sppd->maskapai_pulang;
+        // })
+        // ->addColumn('kode_booking_pulang', function ($dataSurat){
+        //     return $dataSurat->sppd->kode_booking_pulang;
+        // })
+        // ->addColumn('no_tiket_pulang', function ($dataSurat){
+        //     return $dataSurat->sppd->no_tiket_pulang;
+        // })
+        // ->addColumn('harga_pulang', function ($dataSurat){
+        //     return $dataSurat->sppd->harga_pulang;
+        // })
+        // ->addColumn('tgl_masuk_hotel', function ($dataSurat){
+        //     return $dataSurat->sppd->tgl_masuk_hotel;
+        // })
+        // ->addColumn('tgl_keluar_hotel', function ($dataSurat){
+        //     return $dataSurat->sppd->tgl_keluar_hotel;
+        // })
+        // ->addColumn('jumlah_hari_hotel', function ($dataSurat){
+        //     return $dataSurat->sppd->jumlah_hari_hotel;
+        // })
+        // ->addColumn('nama_hotel', function ($dataSurat){
+        //     return $dataSurat->sppd->nama_hotel;
+        // })
+        // ->addColumn('no_kamar', function ($dataSurat){
+        //     return $dataSurat->sppd->no_kamar;
+        // })
+        // ->addColumn('tarif', function ($dataSurat){
+        //     return $dataSurat->sppd->tarif;
+        // })
+        // ->addColumn('sppd_id', function ($dataSurat){
+        //     return $dataSurat->no_sppd;
+        // })
+        // ->addColumn('total', function ($dataSurat){
+        //     return $dataSurat->sppd->total;
+        // })
         ->make(true);
     }
 
@@ -241,7 +256,7 @@ class SuratTugasController extends Controller
 
             // for($i2 = 0; $i2 < sizeof($sppdSelected); $i2++)
             // {
-                $st->no_sppd = 1;
+                // $st->no_sppd = 1;
             //}
             $st->save();
 
@@ -367,12 +382,12 @@ class SuratTugasController extends Controller
             // 'no_sppd' => $request->sppd,
         ];
         
-        // $allData = SuratTugas::findOrFail($id);
-        // $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
-        // $allData->update($dataToUpdate);
+        $allData = SuratTugas::findOrFail($id);
+        $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
+        $allData->update($dataToUpdate);
 
-        // $changeStat = Sppd::find($request->sppd);
-        // $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
+        $changeStat = Sppd::find($request->sppd);
+        $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
 
         return redirect('/surat-tugas')->with('done', 'Data berhasil diperbarui.');
     }

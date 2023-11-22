@@ -8,6 +8,7 @@
                     <th scope="col">No ST</th>
                     <th scope="col">Tgl ST</th>
                     <th scope="col">Nama</th>
+                    <!-- <th scope="col">Status</th> -->
                     <!-- <th scope="col">Unit</th>
                     <th scope="col">Mulai Perjadin</th>
                     <th scope="col">Selesai Perjadin</th>
@@ -190,6 +191,25 @@
             // {
             //     data: 'total'
             // },
+            // {
+            //     data: 'id',
+            //     render: function (data, type, row){
+            //         $.ajax({
+            //             url: "/get-laporan",
+            //             type: "GET",
+            //             dataType: "json",
+
+            //             success: (result) => {
+            //                 console.log(data);
+            //                 for(let i = 0; i < result.length; i++){
+            //                     if(result[i].st_id == data){
+            //                         return "<p>Aktif</p>";
+            //                     }
+            //                 }
+            //             }
+            //         });
+            //     }
+            // },
             {
              data: null,
             render: function ( data, type, row ) {
@@ -198,9 +218,22 @@
             }
         ],
         createdRow: function(row, data){
-            var dataValue = data.no_sp2d;
+            var dataValue = data.spm_id;
+            // $.ajax({
+            //     method: 'GET',
+            //     url: '/getspm',
+            //     dataType: 'json',
 
-            if(dataValue === 0){
+            //     success: (result) => {
+            //         for(let i = 0; i < result.length; i++ ){
+            //             if(result[i].id != data.spm_id){
+            //                 $('td:eq(1)', row).addClass('invalid-bro');
+            //             }
+                        
+            //         }
+            //     }
+            // });
+            if(dataValue === null){
                 $('td:eq(1)', row).addClass('invalid-bro');
             }
         }

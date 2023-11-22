@@ -10,8 +10,13 @@ class LaporanSppd extends Model
     use HasFactory;
     protected $guarded = [];
     
-    public function suratTugas()
+    public function st()
     {
         return $this->belongsTo(SuratTugas::class, 'st_id');
+    }
+
+    public function sppd()
+    {
+        return $this->belongsTo(Sppd::class, 'sppd_id');
     }
 }

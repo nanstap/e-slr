@@ -14,4 +14,9 @@ class Spm extends Model
     {
         return $this->hasMany(Sppd::class);
     }
+
+    public function st()
+    {
+        return $this->hasMany(SuratTugas::class);
+    }
 }

@@ -288,7 +288,7 @@ class DatabaseSeeder extends Seeder
             'kota_tujuan' => 'Semarang',
             'uraian_tugas' => 'Beli Lumpia Banyak',
             'no_nodin' => 9862,
-            'no_sppd' => 2,
+            // 'no_sppd' => 2,
         ]);
 
         // \App\Models\User::factory()->create([

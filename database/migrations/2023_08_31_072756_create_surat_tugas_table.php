@@ -27,7 +27,8 @@ return new class extends Migration
             $table->string('no_nodin')->nullable();
             $table->string('upload_nd')->nullable();
             $table->string('upload_sp')->nullable();
-            $table->foreignId('no_sppd')->nullable();
+            // $table->foreignId('no_sppd')->nullable();
+            $table->foreignId('spm_id')->nullable();
             $table->timestamps();
         });
     }

@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('spms', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl_spm');
             $table->string('no_spm')->nullable();
-            $table->foreignId('no_srt_tgs');
+            $table->date('tgl_spm');
             $table->string('doc')->nullable();
             $table->timestamps();
         });

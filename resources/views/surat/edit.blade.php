@@ -146,18 +146,115 @@
     <label for="" style="font-weight: bold;">Nomor Nota Dinas</label>
     <input type="text" class="form-control" name="no_nodin"  value="{{$allData->no_nodin}}">
   </div>
-  <div class="col-5">
+  <!-- <div class="col-5">
     <label for="" style="display:block; font-weight: bold;">No SPPD</label>
     <select name="sppd" id="sppd" class="form-select" style="border: 2px groove ; border-radius: 4px; height: 40px; width: 440px; padding-left: 20px;">
-      <option value="{{$allData->sppd->id}}" selected hidden class="text-muted">{{$allData->sppd->no_sp2d}}</option>
+      <option value="" selected hidden class="text-muted"></option>
       <option value="1" class="text-muted">Belum Ada</option>
-      @foreach($sppd as $sp)
-        <option value="{{$sp->id}}">{{$sp->no_sp2d}}</option>
-      @endforeach
+     
+        <option value=""></option>
+     
     </select>
+  </div> -->
+  
+  <!-- <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Maskapai / Kendaraan</label>
+    <input type="text" class="form-control" placeholder="Masukan Kendaraan" value="{{ old('maskapai_pergi')}}" name="maskapai_pergi" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Kode Booking Pergi</label>
+    <input type="text" class="form-control pesawat" placeholder="Khusus Pesawat"  value="{{ old('kode_booking_pergi')}}" name="kode_booking_pergi" id="validationCustom02">
   </div>
   
- 
+  <div class="col-3"  style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">No Tiket Pergi</label>
+    <input type="text" class="form-control" placeholder="Khusus Pesawat" value="{{ old('no_tiket_pergi')}}" name="no_tiket_pergi" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Harga Pergi</label>
+    <input type="text" class="form-control" placeholder="Masukan Maskapai" value="{{ old('harga_pergi')}}" name="harga_pergi" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Taksi Asal</label>
+    <input type="text" class="form-control" placeholder="Masukan Harga" value="{{ old('harga_pergi')}}" name="taksi_asal_pergi" id="validationCustom02">
+  </div> <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Taksi Tujuan</label>
+    <input type="text" class="form-control" placeholder="Masukan Harga" value="{{ old('harga_pergi')}}" name="taksi_tujuan_pergi" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+  <label for="">Tanggal Pergi</label>
+      <input type="date" class="form-control" name="tgl_pergi" value="{{ old('tgl_pulang')}}">
+  </div>
+  kendaraan pulang
+  <div class="col-12" style="margin-right: 400px;">
+    <h6 style="font-family: 'Poppins',sans serif; font-weight:bold; margin-top:50px; margin-right:600px;" >Kendaraan Pulang</h6>
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif;">Maskapai / Kendaraan</label>
+    <input type="text" class="form-control" placeholder="Masukkan Kendaraan" value="{{old('tgl_perjadin_mulai')}}"  name="maskapai_pulang" required id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif; ">Kode Booking Pulang</label>
+    <input type="text" class="form-control" placeholder="Khusus Pesawat" value="{{old('tgl_perjadin_selesai')}}"  name="kode_booking_pulang" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+    <div class="form-group">
+      <label for="" style="font-family: 'Poppins',sans serif;margin-top: 10px;">No Tiket Pulang</label>
+      <input type="text" class="form-control " placeholder="Khusus Pesawat" name="no_tiket_pulang">
+    </div>
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+    <div class="form-group">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Harga Pulang</label>
+      <input type="text" class="form-control" placeholder="Masukan Kota" required name="harga_pulang" value="{{old('kota_tujuan')}}">
+    </div>
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Taksi Asal</label>
+    <input type="text" class="form-control" placeholder="Masukan Harga" value="{{ old('harga_pergi')}}" name="taksi_asal_pulang" id="validationCustom02">
+  </div> <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label">Taksi Tujuan</label>
+    <input type="text" class="form-control" placeholder="Masukan Harga" value="{{ old('harga_pergi')}}" name="taksi_tujuan_pulang" id="validationCustom02">
+  </div>
+
+  <div class="col-3" style="margin-top: 20px;">
+    
+      <label for="" style="font-family: 'Poppins',sans serif; ">Tanggal Pulang</label>
+      <input type="date" class="form-control" placeholder="Rincian Tugas" name="tgl_pulang" value="{{old('uraian_tugas')}}">
+    
+  </div>
+hotel
+  <div class="col-12 text-center">
+    <h6 style="font-family: 'Poppins',sans serif; font-weight:bold; margin-top:80px; margin-right:800px;">Hotel</h6>
+  </div>
+  <div class="col-6" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif;">Nama Hotel</label>
+    <input type="text" class="form-control" placeholder="Masukkan Hotel" value="{{old('tgl_perjadin_mulai')}}"  name="nama_hotel" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 20px;">
+    <label for="inputPassword4" class="form-label" style="font-family: 'Poppins',sans serif; ">Nomor Kamar</label>
+    <input type="text" class="form-control" placeholder="Masukan Nomor" value="{{old('tgl_perjadin_selesai')}}"  name="no_kamar" id="validationCustom02">
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+      <label for="" style="font-family: 'Poppins',sans serif;margin-top: 10px;">Jumlah Hari</label>
+      <input type="text" class="form-control " placeholder="Masukan Jumlah" name="jumlah_hari_hotel">
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Tanggal Masuk Hotel</label>
+      <input type="date" class="form-control" placeholder="" name="tgl_masuk_hotel">
+  </div>
+  <div class="col-3" style="margin-top: 9px; margin-left:-13px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Tanggal Keluar Hotel</label>
+      <input type="date" class="form-control" placeholder="" name="tgl_keluar_hotel" value="{{old('kota_tujuan')}}">
+  </div>
+  <div class="col-3" style="margin-top: 9px; margin-left:-13px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Tarif</label>
+      <input type="text" class="form-control" placeholder="Masukan Tarif" name="tarif" value="{{old('kota_tujuan')}}">
+  </div>
+  <div class="col-3" style="margin-top: 9px; margin-left:-13px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Total</label>
+      <input type="text" class="form-control" placeholder="Masukan Total" name="total" value="{{old('kota_tujuan')}}">
+  </div> -->
     <!--
   <div class="col-md-6">
     <label for="inputCity" class="form-label">NIP/NIK</label>

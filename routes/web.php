@@ -5,6 +5,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\SuratTugasController;
 use App\Models\SuratTugas;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,3 +75,14 @@ Route::get('/laporan', [App\Http\Controllers\LaporanSppdController::class, 'crea
 Route::post('/laporan',[App\Http\Controllers\LaporanSppdController::class, 'store']);
 //get data st
 Route::get('/data-st', [App\Http\Controllers\LaporanSppdController::class, 'getDataSt']);
+//get datalaporan
+Route::get('/get-laporan', [App\Http\Controllers\LaporanSppdController::class, 'getLaporan']);
+
+/**
+ *      SPM
+ */
+//getspm
+Route::get('/getspm',[App\Http\Controllers\SpmController::class, 'getSpm']);
+Route::get('/spm/add', [App\Http\Controllers\SpmController::class, 'create']);
+Route::post('/spm/add', [\App\Http\Controllers\SpmController::class, 'store']);
+Route::get('/spm', [\App\Http\Controllers\SpmController::class, 'index']);
