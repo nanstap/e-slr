@@ -213,7 +213,7 @@
             {
              data: null,
             render: function ( data, type, row ) {
-                return '<a class="btn2 btn-warning btn-sm" href="/surat-tugas/edit/' + row.id + '"><i class="fa fa-pen"></i></a><a class="btn2 btn-danger btn-sm" href="/surat-tugas/delete/' + row.id + '"><i class="fas fa-trash"></i></a>'
+                return '<a class="btn2 btn-warning btn-sm" href="/surat-tugas/edit/' + row.id + '"><i class="fa fa-pen"></i></a><a class="btn2 btn-info btn-sm" href="/surat-tugas/view/' + row.id + '"><i class="fa fa-eye" aria-hidden="true"></i></a><a class="btn2 btn-danger btn-sm" href="/surat-tugas/delete/' + row.id + '"><i class="fas fa-trash"></i></a>'
             }
             }
         ],

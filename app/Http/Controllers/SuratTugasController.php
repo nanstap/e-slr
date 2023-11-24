@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use Excel;
 
 class SuratTugasController extends Controller
@@ -336,9 +337,19 @@ class SuratTugasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(SuratTugas $suratTugas)
+    public function show(SuratTugas $suratTugas, $id)
     {
         //menampilkan semua data surat tugas dengan ajax
+        $currentSt = DB::table('surat_tugas')
+        ->where('surat_tugas.id', '=', $id)
+        ->leftJoin('pegawais', 'surat_tugas.pegawai_id', '=', 'pegawais.id')
+        ->leftJoin('spms', 'surat_tugas.spm_id', '=', 'spms.id')
+        ->leftJoin('laporan_sppds', 'surat_tugas.id', '=', 'laporan_sppds.st_id')
+        ->leftJoin('sppds', 'laporan_sppds.sppd_id', '=', 'sppds.id')
+        ->select('surat_tugas.nmr_srt_tgs', 'surat_tugas.upload_st', 'surat_tugas.upload_nd', 'surat_tugas.upload_sp', 'sppds.upload_sppd', 'laporan_sppds.bukti', 'spms.doc')
+        ->orderBy('surat_tugas.id', 'asc')
+        ->get();
+        return view('surat.view', ['currentSt'  => $currentSt]);
     }
 
     /**
@@ -347,7 +358,7 @@ class SuratTugasController extends Controller
     public function edit(SuratTugas $suratTugas, $id)
     {
         $allData = SuratTugas::find($id);
-        $data = SuratTugas::where('id', $id)->value('pegawai_id');
+        $data = SuratTugas::where('id', $id)->value('nmr_srt_tgs');
         $sppd = Sppd::where('status', '!=', 'deactive')->where('id', '!=', 1)->get();
         $pegawai = Pegawai::all();
         $nomor = explode(' ', $data);

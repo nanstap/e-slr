@@ -46,7 +46,7 @@
 
 <!-- <body> -->
   <div class="judul" style="margin-left: 600px; margin-top:50px;">
-    <h3>EDIT SURAT TUGAS</h3>
+    <h3>EDIT SURAT TUGAS {{$nmrSurat}}</h3>
     <hr style="margin-left: -500px;">
   </div>
   <div class="container">

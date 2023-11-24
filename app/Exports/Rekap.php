@@ -174,7 +174,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A2:AC2')->applyFromArray([
+        $sheet->getStyle('A2:AD2')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -199,7 +199,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             ]
         ]);
 
-        $sheet->getStyle('A1:AC1')->applyFromArray([
+        $sheet->getStyle('A1:AD1')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -225,7 +225,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
                 ]
             ]
         ]);
-        $sheet->getStyle('A3:AC3')->applyFromArray([
+        $sheet->getStyle('A3:AD3')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -246,9 +246,9 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             ]
         ]);
 
-        $sheet->getStyle('A1:AC1')->getFont()->setName('Arial Nova')->setSize(25);
+        $sheet->getStyle('A1:AD1')->getFont()->setName('Calibri')->setSize(19);
 
-        $sheet->mergeCells('A1:AC1');
+        $sheet->mergeCells('A1:AD1');
         $sheet->mergeCells('A2:B2');
         $sheet->mergeCells('C2:D2');
         $sheet->mergeCells('E2:F2');
@@ -266,10 +266,10 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
                 $sheet = $event->sheet;
 
                 // Melakukan merge cell pada baris 1 dan kolom A sampai C
-                $sheet->mergeCells('A1:AC1');
+                $sheet->mergeCells('A1:AD1');
 
                 // Mengatur alignment teks ke tengah
-                $sheet->getStyle('A1:AC1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+                $sheet->getStyle('A1:AD1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
             },
         ];
     }

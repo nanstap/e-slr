@@ -61,6 +61,8 @@ Route::get('/surat-tugas/export', [App\Http\Controllers\SuratTugasController::cl
 Route::post('/getsession', [App\Http\Controllers\SuratTugasController::class, 'getSession'])->name('sesi');
 //delete surat tugas
 Route::get('/surat-tugas/delete/{id}', [App\Http\Controllers\SuratTugasController::class, 'destroy']);
+//view document
+Route::get('/surat-tugas/view/{id}', [App\Http\Controllers\SuratTugasController::class, 'show']);
 
 /**
  *          Sppd 
