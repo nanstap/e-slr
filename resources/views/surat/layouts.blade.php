@@ -179,7 +179,10 @@
         <span class="logo-span">E-SLR</span>
         </li>
         <li>
-            <a href="/surat-tugas" class="itam {{ request()->path() === 'surat-tugas' ? 'active' : '' }}">
+            @php
+                $currentUrl = request()->url();
+            @endphp
+            <a href="/surat-tugas" class="itam {{ request()->path() === 'surat-tugas' ? 'active' : '' }}{{ Str::startsWith($currentUrl, url('surat-tugas/edit')) ? 'active' : '' }}{{ Str::startsWith($currentUrl, url('surat-tugas/view')) ? 'active' : '' }}">
                 <i class="fas fa-home"></i>
                 <span class="nav-item">Data ST</span>
             </a>
@@ -217,7 +220,7 @@
         <li>
             <a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
                 <i class="fas fa-sign-out-alt"></i>
-                <span style="margin-left: 45px; font-weight:bold">Logout</span>
+                <span style="margin-left: 45px; font-weight:bold" class="text-center">{{Auth::user()->name}}</span>
             </a>
                 
             <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">

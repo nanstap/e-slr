@@ -48,13 +48,13 @@
 @section('content')
 <div class="container">
   <div class="judul">
-    <h3 style="margin-left: 500px; margin-top:110px; font-size:40px;">FORM INPUT SPM</h3>
+    <h3 style="margin-left: 500px; margin-top:30px; font-size:40px;">FORM INPUT SPM</h3>
     <hr style="width: 1125px; margin-left: 110px;">
   </div>
     <div class="navbar-label">
     </div>
     <!--Form input-->
-    <form class="" method="post" id="" action="/spm/add" style="margin-left: 230px; margin-top: 90px;" enctype="multipart/form-data">
+    <form class="" method="post" id="" action="/spm/add" style="margin-left: 220px; margin-top: 90px;" enctype="multipart/form-data">
       <div class="row g-3" id="rowId">
     @csrf
    
@@ -78,13 +78,23 @@
   <label for="">Tanggal SPM</label>
       <input type="date" class="form-control" name="tgl_spm" value="{{ old('tgl_spm')}}">
   </div>
-  
-  <div class="col-4">
-      <label for="inputEmail4" class="form-label" style="font-family: 'Poppins',sans serif;">Upload SPM</label>
+  <div class="row">
+  <div class="col-4 mt-4">
+  <label for="">No SP2D</label>
+      <input type="text" class="form-control" placeholder="Masukan SPM" name="nosp2d" value="">
+  </div>
+  <div class="col-4 mt-4">
+  <label style="margin-left:10px;" for="">Tanggal SP2D</label>
+      <input style="margin-left: 10px;" type="date" class="form-control" name="tgll_sp2d" value="">
+  </div>
+  <div class="row">
+  <div class="col-4 mt-4">
+      <label for="inputEmail4" class="form-label" style="font-family: 'Poppins',sans serif;">Upload</label>
       <input type="file" value="{{old('doc')}}" class="form-control @error('doc') is-invalid @enderror" id="validationCustom01" name="doc" placeholder=""> 
       @error('doc')
         <div class="alert-danger" style="color: red;">{{ $message }}</div>
       @enderror
+    </div>
     </div>
  
  

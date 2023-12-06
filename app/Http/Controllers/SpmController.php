@@ -41,11 +41,12 @@ class SpmController extends Controller
         $request->validate([
             'no_spm' => 'required',
             'tgl_spm' => 'required',
-            'doc' => 'required'
+            'doc' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048'
         ], [
             'no_spm.required' => 'Harus Di Isi',
             'tgl_spm.required' => 'Harus Di Isi',
-            'doc.required' => 'Harus Di Isi'
+            'doc.max' => 'File tidak boleh lebih dari 2 MB',
+            'doc.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf',
         ]);
         $namaFile = '';
 
@@ -58,6 +59,8 @@ class SpmController extends Controller
         $newSpm = new Spm;
         $newSpm->no_spm = $request->no_spm;
         $newSpm->tgl_spm = $request->tgl_spm;
+        $newSpm->nosp2d = $request->nosp2d;
+        $newSpm->tgll_sp2d = $request->tgll_sp2d;
         $newSpm->doc = $namaFile;
         $newSpm->save();
         

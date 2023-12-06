@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('no_spm')->nullable();
             $table->date('tgl_spm');
+            $table->integer('nosp2d')->nullable();
+            $table->date('tgll_sp2d')->nullable();
             $table->string('doc')->nullable();
             $table->timestamps();
         });

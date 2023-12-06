@@ -46,10 +46,12 @@ class LaporanSppdController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     // 'surat_tugas' => 'required',
-        //     // 'radio' => 'required'
-        // ]);
+        $request->validate([
+            'upload_bukti' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048'
+        ], [
+            'upload_bukti.max' => 'File Tidak Boleh Lebih Dari 2 MB',
+            'upload_bukti.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf'
+        ]);
 
         $namaUpload = '';
         if($request->hasFile('upload_bukti')){
@@ -75,6 +77,9 @@ class LaporanSppdController extends Controller
             'harga_pulang' => $request->harga_pulang,
             'taksi_asal_pulang' => $request->taksi_asal_pulang,
             'taksi_tujuan_pulang' => $request->taksi_tujuan_pulang,
+            'kota_tujuan' => $request->nanta,
+            'jumlah_hari_lumsum' => $request->hekal,
+            'total_lumsum' => $request->arya,
             'tgl_masuk_hotel' => $request->tgl_masuk_hotel,
             'tgl_keluar_hotel' => $request->tgl_keluar_hotel,
             'jumlah_hari_hotel' => $request->jumlah_hari_hotel,
@@ -94,7 +99,7 @@ class LaporanSppdController extends Controller
         //     'laporan_id' => $laporan->id
         // ]);
 
-        return redirect('/surat-tugas')->with(['success' => 'Laporan Sppd Berhasil Di Buat']);
+        return redirect('/surat-tugas')->with(['done' => 'Laporan Sppd Berhasil Di Buat']);
     }
 
     /**

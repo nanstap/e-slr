@@ -31,6 +31,12 @@ class SppdController extends Controller
         // $noSpm = $request->input('no_spm');
         // $noSppd = $request->input('no_sp2d');
         // $tglSppd = $request->input('tgl_sp2d');
+        $request->validate([
+            'upload_sppd' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048'
+        ], [
+            'upload_sppd.max' => 'File Tidak Boleh Lebih Dari 2 MB',
+            'upload_sppd.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf'
+        ]);
         $namaUpload = '';
         if($request->hasFile('upload_sppd')){
             $ext = $request->file('upload_sppd')->getClientOriginalExtension();

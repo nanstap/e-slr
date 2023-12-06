@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('harga_pulang')->nullable();
             $table->integer('taksi_asal_pulang')->nullable();
             $table->integer('taksi_tujuan_pulang')->nullable();
+            $table->string('kota_tujuan')->nullable();
+            $table->integer('jumlah_hari_lumsum')->nullable();
+            $table->integer('total_lumsum')->nullable();
             $table->date('tgl_masuk_hotel')->nullable();
             $table->date('tgl_keluar_hotel')->nullable();
             $table->integer('jumlah_hari_hotel')->nullable();

@@ -37,7 +37,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             ->leftJoin('spms', 'surat_tugas.spm_id', '=', 'spms.id')
             ->leftJoin('laporan_sppds', 'surat_tugas.id', '=', 'laporan_sppds.st_id')
             ->leftJoin('sppds', 'laporan_sppds.sppd_id', '=', 'sppds.id')
-            ->select('surat_tugas.*', 'pegawais.nama', 'spms.*', 'laporan_sppds.*', 'sppds.*')
+            ->select('surat_tugas.*', 'pegawais.nama', 'spms.*', 'laporan_sppds.*', 'laporan_sppds.kota_tujuan as kota_lumsum' ,'sppds.*')
             ->orderBy('surat_tugas.id', 'asc');
     }
     // public function collection()
@@ -71,7 +71,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
         return [
      
             ['Rekapitulasi Surat Tugas', '', '', '', ''],
-            ['Surat Tugas', '', 'Informasi Pegawai','','Tanggal Perjadin','', 'Kota', '', 'Rincian Tugas','','Pembayaran', '', '', 'Perjalanan Dinas', '', '', '', '','','','','','','Hotel/Penginapan'],
+            ['Surat Tugas', '', 'Informasi Pegawai','','Tanggal Perjadin','', 'Kota', '', 'Rincian Tugas','','Pembayaran', '', '','','', 'Perjalanan Dinas', '', '', '', '','','','','','','Hotel/Penginapan', '', '', '', '','','Uang Harian','','','Total Keseluruhan'],
             [
             'Nomor',
             'Tanggal', 
@@ -86,6 +86,8 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             'SPM',
             'SPPD',
             'Tanggal SPPD',
+            'SP2D',
+            'Tanggal SP2D',
             'Tanggal Pergi',
             'Maskapai Pergi',
             'Kode Booking Pergi',
@@ -102,7 +104,10 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             'Nama Hotel',
             'No Kamar',
             'Tarif',
-            'Total'
+            'Kota',
+            'Jumlah Hari',
+            'Total',
+            'TOTAL',
             
             ]
         ];
@@ -126,6 +131,8 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             $row->no_spm,
             $row->no_sp2d,
             $row->tgl_sp2d,
+            $row->nosp2d,
+            $row->tgll_sp2d,
             $row->tgl_pergi,
             $row->maskapai_pergi,
             $row->kode_booking_pergi,
@@ -143,7 +150,12 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             $row->tgl_masuk_hotel,
             $row->tgl_keluar_hotel,
             $row->jumlah_hari_hotel,
+            $row->nama_hotel,
+            $row->jumlah_hari_hotel,
             $row->tarif,
+            $row->kota_lumsum,
+            $row->jumlah_hari_lumsum,
+            $row->total_lumsum,
             $row->total
 
 
@@ -174,7 +186,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A2:AD2')->applyFromArray([
+        $sheet->getStyle('A2:AI2')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -199,7 +211,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             ]
         ]);
 
-        $sheet->getStyle('A1:AD1')->applyFromArray([
+        $sheet->getStyle('A1:AI1')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -225,7 +237,7 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
                 ]
             ]
         ]);
-        $sheet->getStyle('A3:AD3')->applyFromArray([
+        $sheet->getStyle('A3:AI3')->applyFromArray([
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
                 'startColor' => [
@@ -246,17 +258,21 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
             ]
         ]);
 
-        $sheet->getStyle('A1:AD1')->getFont()->setName('Calibri')->setSize(19);
+        $sheet->getStyle('A1:AI1')->getFont()->setName('Calibri')->setSize(19);
 
-        $sheet->mergeCells('A1:AD1');
+        $sheet->mergeCells('A1:AI1');
         $sheet->mergeCells('A2:B2');
         $sheet->mergeCells('C2:D2');
         $sheet->mergeCells('E2:F2');
         $sheet->mergeCells('G2:H2');
         $sheet->mergeCells('I2:J2');
-        $sheet->mergeCells('K2:M2');
-        $sheet->mergeCells('N2:W2');
-        $sheet->mergeCells('X2:AD2');
+        $sheet->mergeCells('K2:O2');
+        $sheet->mergeCells('P2:Y2');
+        $sheet->mergeCells('Z2:AE2');
+        $sheet->mergeCells('AF2:AH2');
+
+
+
         
     }
     public function registerEvents(): array
@@ -266,10 +282,10 @@ class Rekap implements WithHeadings, ShouldAutoSize, WithMapping, WithStyles, Wi
                 $sheet = $event->sheet;
 
                 // Melakukan merge cell pada baris 1 dan kolom A sampai C
-                $sheet->mergeCells('A1:AD1');
+                $sheet->mergeCells('A1:AI1');
 
                 // Mengatur alignment teks ke tengah
-                $sheet->getStyle('A1:AD1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+                $sheet->getStyle('A1:AI1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
             },
         ];
     }

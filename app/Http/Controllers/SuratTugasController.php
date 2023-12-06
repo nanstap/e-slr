@@ -45,8 +45,17 @@ class SuratTugasController extends Controller
         ->addColumn('nodin', function ($datast){
             return $datast->no_nodin;
         })
-        ->addColumn('id', function ($datast){
-            return $datast->id;
+        ->addColumn('status', function ($datast){
+           $status = DB::table('surat_tugas')
+            ->where('surat_tugas.id', '=', $datast->id)
+            ->leftJoin('pegawais', 'surat_tugas.pegawai_id', '=', 'pegawais.id')
+            ->leftJoin('spms', 'surat_tugas.spm_id', '=', 'spms.id')
+            ->leftJoin('laporan_sppds', 'surat_tugas.id', '=', 'laporan_sppds.st_id')
+            ->leftJoin('sppds', 'laporan_sppds.sppd_id', '=', 'sppds.id')
+            ->select('laporan_sppds.st_id', 'laporan_sppds.sppd_id')
+            ->orderBy('surat_tugas.id', 'asc')
+            ->get();
+            return $status;
         })
         // ->addColumn('spm_id', function($datast)  {
         //     return $datast->spm_id;
@@ -189,14 +198,17 @@ class SuratTugasController extends Controller
         $datval = $request->validate([
             'no_srt_tgs' => 'required',
             'tgl_srt_tgs' => 'required',
-            'upload_st' => 'max:130',
-            'upload_nd' => 'max:130',
-            'upload_sp' => 'max:130',
+            'upload_st' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048',
+            'upload_nd' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048',
+            'upload_sp' => 'file|mimes:jpeg,png,jpg,webp,pdf|max:2048',
             //'pegawai_[]' => 'required'
         ],  [
-            'upload_st.max' => 'File Tidak Boleh Lebih Dari 13 KB', 
-            'upload_nd.max' => 'File Tidak Boleh Lebih Dari 13 KB',
-            'upload_sp.max' => 'File Tidak Boleh Lebih Dari 13 KB',
+            'upload_st.max' => 'File Tidak Boleh Lebih Dari 2 MB', 
+            'upload_nd.max' => 'File Tidak Boleh Lebih Dari 2 MB',
+            'upload_sp.max' => 'File Tidak Boleh Lebih Dari 2 MB',
+            'upload_st.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf', 
+            'upload_nd.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf',
+            'upload_sp.mimes' => 'Format Harus jpeg, png, jpg, webp, pdf',
             // 'upload_st.required' => 'File Perlu Di Upload',
             // 'upload_st.mimetypes' => 'Format file tidak di dukung',
             // 'upload_nd.required' => 'File Perlu Di Upload',
@@ -394,11 +406,11 @@ class SuratTugasController extends Controller
         ];
         
         $allData = SuratTugas::findOrFail($id);
-        $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
+        // $allData->sppd->id != 1 ? Sppd::find($allData->sppd->id)->update(['status' => 'active']) : '' ;
         $allData->update($dataToUpdate);
 
-        $changeStat = Sppd::find($request->sppd);
-        $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
+        // $changeStat = Sppd::find($request->sppd);
+        // $changeStat->id != 1 ? $changeStat->update(['status' => 'deactive']) : '';
 
         return redirect('/surat-tugas')->with('done', 'Data berhasil diperbarui.');
     }

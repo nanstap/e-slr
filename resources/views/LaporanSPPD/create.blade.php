@@ -150,6 +150,23 @@
       <input type="date" class="form-control" placeholder="Rincian Tugas" name="tgl_pulang" value="{{old('uraian_tugas')}}">
     
   </div>
+  <!--Lumsum-->
+  <div class="col-12">
+       <h6 style="font-weight: bold; font-family: 'Poppins',sans serif; margin-top:50px;">Lumsum</h6>
+      </div>
+      <div class="col-3" style="margin-top: 9px;">
+      <label for="" style="font-family: 'Poppins',sans serif;margin-top: 10px;">Kota Tujuan</label>
+      <input type="text" class="form-control " placeholder="Masukan Kota" name="nanta"> <!-- custom name -->
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Jumlah Hari</label>
+      <input type="text" class="form-control" placeholder="Masukan Jumlah Hari" name="hekal"> <!-- custom name -->
+  </div>
+  <div class="col-3" style="margin-top: 9px;">
+      <label for="" style="font-family: 'Poppins',sans serif; margin-top: 10px;">Total</label>
+      <input type="text" class="form-control" placeholder="Masukan Total" name="arya"> <!-- custom name -->
+  </div>
+
 <!--hotel-->
   <div class="col-12 text-center">
     <h6 style="font-family: 'Poppins',sans serif; font-weight:bold; margin-top:80px; margin-right:800px;">Hotel</h6>

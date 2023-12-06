@@ -81,7 +81,7 @@
       @if(pathinfo($currentSt[0]->upload_st, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_st) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_st)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_st)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header">
           <h5 class="card-title text-center">Surat Tugas</h5>
@@ -93,7 +93,7 @@
       @if(pathinfo($currentSt[0]->upload_nd, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_nd) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_nd)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_nd)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header ">
           <h5 class="card-title text-center">Nota Dinas</h5>
@@ -105,7 +105,7 @@
       @if(pathinfo($currentSt[0]->upload_sp, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_sp) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_sp)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/st/' . $currentSt[0]->upload_sp)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header">
           <h5 class="card-title text-center">Surat Persetujuan</h5>
@@ -117,7 +117,7 @@
       @if(pathinfo($currentSt[0]->upload_sppd, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/sppd/' . $currentSt[0]->upload_sppd) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/sppd/' . $currentSt[0]->upload_sppd)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/sppd/' . $currentSt[0]->upload_sppd)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header">
           <h5 class="card-title text-center">SPPD</h5>
@@ -129,7 +129,7 @@
       @if(pathinfo($currentSt[0]->bukti, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/laporan/' . $currentSt[0]->bukti) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/laporan/' . $currentSt[0]->bukti)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/laporan/' . $currentSt[0]->bukti)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header">
           <h5 class="card-title text-center">Laporan SPPD</h5>
@@ -141,7 +141,7 @@
       @if(pathinfo($currentSt[0]->doc, PATHINFO_EXTENSION) == 'pdf')
       <embed src="{{ asset('/storage/uploads/spm/' . $currentSt[0]->doc) }}" type="application/pdf" width="250px" height="400px" />
       @else
-      <img src="{{ asset('/storage/uploads/spm/' . $currentSt[0]->doc)}}" class="card-img-top" alt="Hilang / Tidak Ada">
+      <img src="{{ asset('/storage/uploads/spm/' . $currentSt[0]->doc)}}" width="250px" height="400px" class="card-img-top" alt="Hilang / Tidak Ada">
       @endif
         <div class="card-header">
           <h5 class="card-title text-center">SPM</h5>

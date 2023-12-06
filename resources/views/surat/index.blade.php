@@ -1,5 +1,53 @@
 @extends('surat.layouts')
 @section('content')
+<style>
+    .checkbox-wrapper-18{
+        margin-top: -100px;
+        margin-left: 70px;
+    }
+  .checkbox-wrapper-18 .round {
+    position: relative;
+  }
+
+  .checkbox-wrapper-18 .round label {
+    background-color: #fff;
+    border: 3px solid gray;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    display: block;
+  }
+
+  .checkbox-wrapper-18 .round label:after {
+    border: 2px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 8px;
+    opacity: 0;
+    position: absolute;
+    top: 9px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+
+  .checkbox-wrapper-18 .round input[type="checkbox"] {
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+  }
+
+  .checkbox-wrapper-18 .round input[type="checkbox"]:checked + label {
+    background-color: #66bb6a;
+    border-color: #66bb6a;
+  }
+
+  .checkbox-wrapper-18 .round input[type="checkbox"]:checked + label:after {
+    opacity: 1;
+  }
+</style>
 <div class="card-body">
                 <table id="data-table" class="table">
                 <thead>
@@ -8,7 +56,7 @@
                     <th scope="col">No ST</th>
                     <th scope="col">Tgl ST</th>
                     <th scope="col">Nama</th>
-                    <!-- <th scope="col">Status</th> -->
+                    <th scope="col">Stat</th>
                     <!-- <th scope="col">Unit</th>
                     <th scope="col">Mulai Perjadin</th>
                     <th scope="col">Selesai Perjadin</th>
@@ -44,9 +92,25 @@
                 
                 
             </table>
-            <a href="{{ route('exportSurat')}}" class="btn btn-primary" style="margin-top: 3px;">Export</a>
+            @extends('layouts.bootstrapjs') 
+            <div class="row">
+                <div class="col-4">
+                    <a href="{{ route('exportSurat')}}" class="btn btn-primary" style="margin-top: 3px;">Export</a>
+                </div>
+                <div class="col-2 text-center"></div>
+                <div class="col-md-6 form-check"  style="margin-left:360px; padding-left:540px;">
+                <div class="checkbox-wrapper-18">
+                    <div class="round">
+                        <input type="checkbox" id="spm">
+                        <label for="spm" class="form-check-label" ></label>
+                    </div>
+                    
+                </div>
+                    <!-- <input type="checkbox" class="form-check-input" id="spm"><label for="spm" class="form-check-label">SPM</label>-->
+                </div>
+                
+                </div>
             </div>
-   @extends('layouts.bootstrapjs') 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -82,7 +146,7 @@
         
 
         $(document).ready(function() {
-            $('#data-table').DataTable({
+            var dable = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
                 paging: false,
@@ -109,6 +173,26 @@
             },
             {
             data: 'pegawai_name'
+            },
+            {
+                data: 'status',
+                render: function(data, type, row){
+                    var dataArray = JSON.parse(data);
+                    var ada = false; 
+                    for (var i = 0; i < dataArray.length; i++) {
+                        var currentObject = dataArray[i];
+                        
+                        // Mengakses 'st_id' dari setiap objek dan melakukan pengecekan
+                        if (currentObject.st_id !== null) {
+                            ada = true
+                            return '<i class="fas fa-check-circle" style="color: #007cdb;"></i>';
+                        }
+                        else {
+                            return '<i class="fas fa-exclamation-circle" style="color: #ff0000;"></i>';
+                        }
+                    }
+                    // if(ada == false)
+                }
             },
             // {
             // data: 'unit'
@@ -237,9 +321,24 @@
                 $('td:eq(1)', row).addClass('invalid-bro');
             }
         }
-        
-        });
+    });
 
-     });
+    $("#spm").on('change', function() {
+        var isChecked = $(this).is(':checked');
+
+        dable.rows().every(function() {
+            var row = this.node();
+            if (!$(row).find('.invalid-bro').length > 0) {
+                if (isChecked) {
+                    $(row).hide(); // Menampilkan baris yang memiliki class 'invalid-bro'
+                } else {
+                    $(row).show(); // Menyembunyikan baris yang tidak memiliki class 'invalid-bro'
+                }
+            }
+        });
+    });
+
+    
+});
     </script>
     @endsection
